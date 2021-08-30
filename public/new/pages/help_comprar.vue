@@ -39,7 +39,7 @@
                             </div>
                             <div class="uk-flex uk-flex-column uk-align-center uk-flex-center">
                                 <span class="uk-text-center"><i uk-icon="icon: cart; ratio: 5"></i></span>
-                                <h5 class="uk-text-center">PAGAR SEGURAMENTE</h5>
+                                <h5 class="uk-text-center">PAGA SEGURAMENTE</h5>
                                 <p class="uk-text-center uk-text-small">Te redirigimos al portal Webpay para que procedas a pagar de forma segura!.</p>
                             </div>
                         </div>
