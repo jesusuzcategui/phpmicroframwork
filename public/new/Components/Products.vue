@@ -10,7 +10,7 @@
                         <h4 class="mdl-card__title-text">Tarjeta de 1000 CLP</h4>
                     </div>
                     <div class="mdl-card__actions">
-                        <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                        <a @click="selectInformation(1000)" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="javascript:void(0)">
                             Más información
                             <i class="material-icons">chevron_right</i>
                         </a>
@@ -27,7 +27,7 @@
                         <h4 class="mdl-card__title-text">Tarjeta de 2000 CLP</h4>
                     </div>
                     <div class="mdl-card__actions">
-                        <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                        <a  @click="selectInformation(2000)" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"  href="javascript:void(0)">
                             Más información
                             <i class="material-icons">chevron_right</i>
                         </a>
@@ -44,7 +44,7 @@
                         <h4 class="mdl-card__title-text">Tarjeta de 5000 CLP</h4>
                     </div>
                     <div class="mdl-card__actions">
-                        <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                        <a  @click="selectInformation(5000)" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"  href="javascript:void(0)">
                             Más información
                             <i class="material-icons">chevron_right</i>
                         </a>
@@ -81,12 +81,51 @@
                 </div>
             </div>
         </div>
+
+        <div id="modal_information" class="uk-padding-small" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title uk-margin-remove-bottom">Información</h2>
+                    <h4 class="uk-margin-remove-top">Minutos {{ammount}} CLP</h4>
+                </div>
+                <div class="uk-modal-body">
+                    <div class="">
+                        <table class="uk-table uk-table-small uk-table-divider uk-table-middle uk-table-responsive">
+                            <thead>
+                                <tr>
+                                    <th class="uk-table-expand">DESTINO</th>
+                                    <th class="uk-table-shrink">FIJO</th>
+                                    <th class="uk-table-shrink">MOVIL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="min of information">
+                                    <td>
+                                        <img :src="min.icon" :alt="min.destino">
+                                        <span>{{min.destino}}</span>
+                                    </td>
+                                    <td>{{min.min_fijo}}</td>
+                                    <td>{{min.min_movil}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
     module.exports = {
         data(){
             return {
+                information: [],
+                ammount: 0,
+                minutos: {},
                 payment: {
                     email: 'uzcateguijesusdev@gmail.com',
                     phone: '3104324212',
@@ -95,6 +134,12 @@
             };
         },
         methods: {
+            selectInformation(monto){
+                this.information = this.minutos[monto];
+                this.ammount = monto;
+                const modal_information = document.querySelector("#modal_information");
+                UIkit.modal(modal_information).show();
+            },
             proccessPayment(){
                 swal({
                     title: "Are you sure?",
@@ -204,6 +249,7 @@
             }
         },
         mounted(){
+            this.minutos = this.$root.minutes;
 
         }
     };

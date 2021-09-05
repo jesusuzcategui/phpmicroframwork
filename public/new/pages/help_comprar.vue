@@ -2,7 +2,7 @@
     <div>
         <div class="uk-container">
             <h3 class="uk-text-center uk-heading-primary uk-margin-bottom-large">¿Cómo comprar?</h3>
-            <div uk-grid="" class="uk-child-width-1-4 uk-grid-small uk-grid-divider uk-grid-match">
+            <div uk-grid="" class="uk-child-width-1-4@l uk-grid-small uk-grid-divider uk-grid-match">
                 <div>
                     <div class="uk-card uk-card-default">
                         <div class="uk-card-body">
@@ -76,4 +76,5 @@
 
         }
     };
+    
 </script>

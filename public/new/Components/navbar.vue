@@ -1,7 +1,7 @@
 <template>
     <div>
         <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-            <nav class="uk-navbar-container uk-light" uk-navbar="mode: click">
+            <nav style="background-color: white" class="uk-navbar-container uk-light" uk-navbar="mode: click">
 
 
                 <div class="uk-navbar-left">
@@ -13,17 +13,17 @@
                 <div class="uk-navbar-right">
                     <div class="uk-visible@m">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/#/">Comprar</a></li>
-                            <li><a href="/#/como-comprar">¿Cómo comprar?</a></li>
-                            <li><a href="/#/como-usar">¿Cómo usar?</a></li>
-                            <li><a href="/#/preguntas-frecuentes">Preguntas frecuentes</a></li>
-                            <li><a href="/#/contacto">Contacto</a></li>
+                            <li><a class="item-menu" :class="($route.name=='Inicio') ? 'item-menu-active' : ''" href="/#/">Comprar</a></li>
+                            <li><a class="item-menu" :class="($route.name=='Comprar') ? 'item-menu-active' : ''" href="/#/como-comprar">¿Cómo comprar?</a></li>
+                            <li><a class="item-menu" :class="($route.name=='Usar') ? 'item-menu-active' : ''" href="/#/como-usar">¿Cómo usar?</a></li>
+                            <li><a class="item-menu" :class="($route.name=='Preguntas') ? 'item-menu-active' : ''" href="/#/preguntas-frecuentes">Preguntas frecuentes</a></li>
+                            <li><a class="item-menu" :class="($route.name=='Contacto') ? 'item-menu-active' : ''" href="/#/contacto">Contacto</a></li>
                         </ul>
                     </div>
                     <div class="uk-hidden@m">
                         <ul class="uk-navbar-nav">
                             <li>
-                                <a href="#sidefrontmenu" uk-toggle><span uk-icon="icon: menu; ratio: 2"></span></a>
+                                <a id="sidefrontmenu-open" href="#sidefrontmenu" uk-toggle><span uk-icon="icon: menu; ratio: 2"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -63,13 +63,36 @@
         </div>
     </div>
 </template>
+<style>
+    .item-menu {
+        color: #ffc116 !important;
+        font-weight: bold;
+        transition: all ease .5s;
+    }
+
+    .item-menu-active {
+        background-color: #2c3194 !important;
+        color: #fff !important;
+    }
+
+    .item-menu:hover {
+        background-color: #2c3194;
+        color: #fff !important;
+    }
+    #sidefrontmenu-open span {
+        color: #ffc116 !important;
+    }
+    .uk-offcanvas-bar {
+        background-color: #2c3194 !important;
+    }
+</style>
 <script>
     module.exports = {
         data(){
             return {};
         },
         mounted(){
-
+            console.log(this);
         }
     };
 </script>
